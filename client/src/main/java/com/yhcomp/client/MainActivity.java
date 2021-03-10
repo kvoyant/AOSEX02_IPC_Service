@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +62,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 bindService(intent, srvConn, Context.BIND_AUTO_CREATE);
                 break;
+            }
+
+            case R.id.getbutton : {
+                Toast.makeText(this, "패키지명 가져오기", Toast.LENGTH_SHORT).show();
+
+                String packageName = null;
+
+                try {
+                    packageName = mBinder.getServerPackageName();
+                } catch (RemoteException e) {
+                    Log.e("asdd", Tag + "   - 패키지명 가져오기 RemoteException :" + e.toString());
+                    e.printStackTrace();
+                }
+                Log.e("asdd", Tag + "   - 패키지명 가져오기 :" + packageName);
             }
         }
 
