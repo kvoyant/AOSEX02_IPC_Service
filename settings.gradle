@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "AOSEX02_IPC_Service"
