@@ -15,7 +15,7 @@ public class MyService extends Service {
 
         Toast.makeText(this, "[RemoteServie] onBind 함수 호출", Toast.LENGTH_LONG).show();
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        return mBinder;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MyService extends Service {
 
         @Override
         public String getServerPackageName() throws RemoteException {
-            return null;
+            return MyService.this.getPackageName();
         }
     };
 
