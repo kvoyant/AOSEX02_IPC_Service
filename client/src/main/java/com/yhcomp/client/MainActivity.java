@@ -76,7 +76,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
                 Log.e("asdd", Tag + "   - 패키지명 가져오기 :" + packageName);
+
+                //TextView 에 원격 서비스의 패키지명 출력
+                text.setText(packageName);
+                break;
             }
+
+            case R.id.stopbutton:
+                Toast.makeText(this, "원격 서비스 종료", Toast.LENGTH_SHORT).show();
+
+                //원격 서비스 연결을 종료
+                this.unbindService((srvConn));
+                break;
+
+            default:
+                break;
         }
 
     }
